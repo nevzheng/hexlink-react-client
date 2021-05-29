@@ -4,8 +4,32 @@ import {
   AppContextProviderProps,
   AppReducerAction,
   AppState,
-} from "../shared/AppTypes";
-// } from "AppTypes";
+} from "../types/types";
+
+// interface Redirect {
+//   url: string;
+//   code: string;
+//   created: string;
+// }
+
+// interface AppState {
+//   redirects: Array<Redirect>;
+//   lastRedirect?: Redirect;
+// }
+
+// enum AppReducerAction {
+//   UpdateRedirectArray,
+//   UpdateLastRedirect,
+//   SubmitShortenRequest,
+// }
+
+// interface AppContextInterface {
+//   state: AppState;
+//   dispatch: React.Dispatch<AppReducerAction>;
+// }
+// interface AppContextProviderProps {
+//   children: React.ReactNode;
+// }
 
 export const AppContext =
   React.createContext<AppContextInterface | undefined>(undefined);
@@ -27,7 +51,9 @@ const appReducer = (state: AppState, action: AppReducerAction) => {
   }
 };
 
-const AppContextProvider = ({ children }: AppContextProviderProps) => {
+const AppContextProvider = ({
+  children,
+}: AppContextProviderProps): JSX.Element => {
   const [state, dispatch] = useReducer(appReducer, {
     redirects: [],
   });
@@ -36,7 +62,7 @@ const AppContextProvider = ({ children }: AppContextProviderProps) => {
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
-const useAppContext = () => {
+const useAppContext = (): AppContextInterface => {
   const context = React.useContext(AppContext);
   if (context === undefined) {
     throw new Error("useAppContext must be used within a AppContextProvider");

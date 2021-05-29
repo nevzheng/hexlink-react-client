@@ -1,4 +1,4 @@
-import { Redirect } from "types";
+import { Redirect } from "../types/types";
 
 interface LinkTableRowProp {
   redirect: Redirect;

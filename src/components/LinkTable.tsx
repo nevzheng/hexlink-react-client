@@ -1,6 +1,6 @@
 import Table from "react-bootstrap/Table";
 
-import { Redirect } from "types";
+import { Redirect } from "../types/types";
 
 import LinkTableRow from "./LinkTableRow";
 
