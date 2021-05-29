@@ -9,7 +9,7 @@ import LinkTable from "./components/LinkTable";
 import UrlForm from "./components/UrlForm";
 import ShortenResult from "./components/ShortenResult";
 
-import AppContextProvider from "./context/AppContext";
+import { AppContextProvider } from "./context/AppContext";
 
 export const App: React.FC = () => {
   return (

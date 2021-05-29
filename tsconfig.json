@@ -25,7 +25,7 @@
     "incremental": true,
     "noFallthroughCasesInSwitch": true,
     "typeRoots": [
-      "shared/types",
+      "shared/AppTypes",
       "node_modules/@types"
     ]
   },

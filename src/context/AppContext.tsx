@@ -1,27 +1,47 @@
-import React, { useState } from "react";
-import { AppContextInterface } from "types";
+import React, { useReducer } from "react";
+import {
+  AppContextInterface,
+  AppContextProviderProps,
+  AppReducerAction,
+  AppState,
+} from "../shared/AppTypes";
+// } from "AppTypes";
 
-export const AppContext = React.createContext<AppContextInterface | null>(null);
+export const AppContext =
+  React.createContext<AppContextInterface | undefined>(undefined);
 
-const AppContextProvider: React.FC = (props) => {
-  const [lastRedirectId, setLastRedirectId] = useState(null);
-  const [redirects, setRedirects] = useState([]);
-  return (
-    <AppContext.Provider
-      value={{
-        lastRedirectId,
-        setLastRedirectId,
-        redirects,
-        setRedirects,
-      }}
-    >
-      {
-        // TODO: Remove workaround
-        // eslint-disable-next-line react/prop-types
-        props.children
-      }
-    </AppContext.Provider>
-  );
+const appReducer = (state: AppState, action: AppReducerAction) => {
+  switch (action) {
+    case AppReducerAction.UpdateRedirectArray: {
+      return state;
+    }
+    case AppReducerAction.UpdateLastRedirect: {
+      return state;
+    }
+    case AppReducerAction.SubmitShortenRequest: {
+      return state;
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action}`);
+    }
+  }
 };
 
-export default AppContextProvider;
+const AppContextProvider = ({ children }: AppContextProviderProps) => {
+  const [state, dispatch] = useReducer(appReducer, {
+    redirects: [],
+  });
+
+  const value = { state, dispatch };
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
+
+const useAppContext = () => {
+  const context = React.useContext(AppContext);
+  if (context === undefined) {
+    throw new Error("useAppContext must be used within a AppContextProvider");
+  }
+  return context;
+};
+
+export { AppContextProvider, useAppContext };
