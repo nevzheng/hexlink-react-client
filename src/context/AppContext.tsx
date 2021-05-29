@@ -2,22 +2,32 @@ import React, { useReducer } from "react";
 import {
   AppContextInterface,
   AppContextProviderProps,
-  AppReducerAction,
+  Action,
   AppState,
+  ActionType,
 } from "../types/types";
+
+// import { PostShortenUrl } from "../api/request";
 
 export const AppContext =
   React.createContext<AppContextInterface | undefined>(undefined);
 
-const appReducer = (state: AppState, action: AppReducerAction) => {
-  switch (action) {
-    case AppReducerAction.UpdateRedirectArray: {
+// const appReducer: React.Reducer<AppState, Action> = async (
+const appReducer: React.Reducer<AppState, Action> = (
+  state: AppState,
+  action: Action
+) => {
+  console.log(
+    `AppContext::appReducer called with state: ${JSON.stringify(
+      state
+    )}, action: ${JSON.stringify(action)}`
+  );
+
+  switch (action.type) {
+    case ActionType.SetLastRedirect: {
       return state;
     }
-    case AppReducerAction.UpdateLastRedirect: {
-      return state;
-    }
-    case AppReducerAction.SubmitShortenRequest: {
+    case ActionType.SetRedirectArray: {
       return state;
     }
     default: {
