@@ -6,31 +6,6 @@ import {
   AppState,
 } from "../types/types";
 
-// interface Redirect {
-//   url: string;
-//   code: string;
-//   created: string;
-// }
-
-// interface AppState {
-//   redirects: Array<Redirect>;
-//   lastRedirect?: Redirect;
-// }
-
-// enum AppReducerAction {
-//   UpdateRedirectArray,
-//   UpdateLastRedirect,
-//   SubmitShortenRequest,
-// }
-
-// interface AppContextInterface {
-//   state: AppState;
-//   dispatch: React.Dispatch<AppReducerAction>;
-// }
-// interface AppContextProviderProps {
-//   children: React.ReactNode;
-// }
-
 export const AppContext =
   React.createContext<AppContextInterface | undefined>(undefined);
 
