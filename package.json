@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node ./src/test/mockserver.js"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,9 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "4.2.0",
-    "prettier": "2.3.0"
+    "json": "^11.0.0",
+    "json-server": "^0.16.3",
+    "prettier": "2.3.0",
+    "server": "^1.0.33"
   }
 }
