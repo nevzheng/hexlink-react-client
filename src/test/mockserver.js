@@ -22,9 +22,8 @@ server.use((req, res, next) => {
 
 server.use(router);
 
-const port = process.env.MOCK_PORT ? process.env.MOCK_PORT : "8080";
-console.log(`listening on ${port}`);
+console.log(`listening on 8000`);
 
-server.listen(parseInt(port, 10), () => {
+server.listen(8000, () => {
   console.log("JSON Server is running");
 });
