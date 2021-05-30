@@ -1,43 +1,45 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-// import { PostShortenUrl } from "../api/request";
-// import { useAppContext } from "../context/AppContext";
-// import { ActionType, Redirect } from "../types/types";
+import { PostShortenUrl } from "../api/request";
+import { useAppContext } from "../context/AppContext";
+import { ActionType, Redirect } from "../types/types";
 
 const UrlForm: React.FC = () => {
-  // const { dispatch } = useAppContext();
+  const { dispatch } = useAppContext();
 
-  const handleSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target as HTMLFormElement),
-      formDataObj = Object.fromEntries(formData.entries());
-    console.log(formDataObj);
+    const formData = new FormData(e.target);
+    const url = formData.get("url") as string;
+    console.log(`URL Entered: ${url}`);
 
-    // // MAKE API Request
-    // await PostShortenUrl(target.value)
-    //   .then((response) => {
-    //     if (response.status !== 201) throw new Error();
-    //     return response.json();
-    //   })
-    //   .then((json) => {
-    //     console.log(json);
-    //     return JSON.parse(json) as Redirect;
-    //   })
-    //   .then((r: Redirect) => {
-    //     dispatch({ type: ActionType.SetLastRedirect, payload: r });
-    //     return r;
-    //   })
-    //   .then((r: Redirect) => {
-    //     dispatch({ type: ActionType.AppendToRedirectArray, payload: r });
-    //     return r;
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    if (url === null) {
+      return;
+    }
+    // MAKE API Request
+    await PostShortenUrl(url)
+      .then((response) => {
+        if (response.status !== 201) throw new Error();
+        return response.json();
+      })
+      .then((json) => {
+        console.log(json);
+        return JSON.parse(json) as Redirect;
+      })
+      .then((r: Redirect) => {
+        dispatch({ type: ActionType.SetLastRedirect, payload: r });
+        return r;
+      })
+      .then((r: Redirect) => {
+        dispatch({ type: ActionType.AppendToRedirectArray, payload: r });
+        return r;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -45,7 +47,11 @@ const UrlForm: React.FC = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formURLInput">
           <Form.Label>URL to Shorten</Form.Label>
-          <Form.Control type="text" placeholder="http://shorten.me" />
+          <Form.Control
+            type="text"
+            name="url"
+            placeholder="http://shorten.me"
+          />
         </Form.Group>
         <Button className="mb-3" variant="primary" type="submit">
           Submit
