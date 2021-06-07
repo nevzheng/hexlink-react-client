@@ -1,5 +1,5 @@
 export const PostShortenUrl = async (url: string): Promise<Response> => {
-  const route = `${process.env.BACKEND_URL}/api/shorten`;
+  const route = `${process.env.REACT_APP_API_URL}/api/shorten`;
   const req = await fetch(route, {
     method: "POST",
     headers: {
