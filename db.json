@@ -1,3 +1,10 @@
 {
-  "shorten": {}
+  "shortUrls": [
+    {
+      "url": "test",
+      "created": 1623108675560,
+      "code": "83dda108-30e6-48f5-b7e0-906ef98d98cd",
+      "id": 1
+    }
+  ]
 }
