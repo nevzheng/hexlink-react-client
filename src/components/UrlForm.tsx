@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import { PostShortenUrl } from "../api/request";
 import { useAppContext } from "../context/AppContext";
-import { ActionType, Redirect } from "../types/types";
+import { ActionType, Redirect, Action } from "../types/types";
 
 const UrlForm: React.FC = () => {
   const { dispatch } = useAppContext();
@@ -27,15 +27,21 @@ const UrlForm: React.FC = () => {
       })
       .then((json) => {
         console.log(json);
-        return JSON.parse(json) as Redirect;
+        return {
+          url: json.url,
+          code: json.code,
+          created: json.created,
+        } as Redirect;
       })
       .then((r: Redirect) => {
-        dispatch({ type: ActionType.SetLastRedirect, payload: r });
+        dispatch({ type: ActionType.SetLastRedirect, payload: r } as Action);
         return r;
       })
       .then((r: Redirect) => {
-        dispatch({ type: ActionType.AppendToRedirectArray, payload: r });
-        return r;
+        dispatch({
+          type: ActionType.AppendToRedirectArray,
+          payload: r,
+        } as Action);
       })
       .catch((err) => {
         console.log(err);

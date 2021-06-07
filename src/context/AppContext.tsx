@@ -23,15 +23,21 @@ const appReducer: React.Reducer<AppState, Action> = (
     )}, action: ${JSON.stringify(action)}`
   );
 
-  switch (action.type) {
+  switch (action.type as ActionType) {
     case ActionType.SetLastRedirect: {
-      return state;
+      return {
+        redirects: state.redirects,
+        lastRedirect: action.payload,
+      };
     }
-    case ActionType.SetRedirectArray: {
-      return state;
+    case ActionType.AppendToRedirectArray: {
+      return {
+        redirects: [...state.redirects, action.payload],
+        lastRedirect: state.lastRedirect,
+      };
     }
     default: {
-      throw new Error(`Unhandled action type: ${action}`);
+      throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 };

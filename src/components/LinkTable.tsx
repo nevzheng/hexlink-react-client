@@ -25,7 +25,9 @@ const LinkTable: React.FC = () => {
         <tbody>
           {state.redirects != null
             ? state.redirects.map((redirect, index) => {
-                return <LinkTableRow redirect={redirect} key={index} />;
+                return (
+                  <LinkTableRow redirect={redirect} key={index} index={index} />
+                );
               })
             : ""}
         </tbody>

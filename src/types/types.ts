@@ -10,14 +10,13 @@ export interface AppState {
 }
 
 export enum ActionType {
-  SetRedirectArray = "SetRedirectArray",
   AppendToRedirectArray = "AppendToRedirectArray",
   SetLastRedirect = "SetLastRedirect",
 }
 
 export interface Action {
   type: ActionType;
-  payload: Array<Redirect> | Redirect;
+  payload: Redirect;
 }
 
 export interface AppContextInterface {
