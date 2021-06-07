@@ -3,6 +3,14 @@
 
 
 
+## Demo, no backend
+0. Open 3 Terminals
+1. `yarn install` in Terminal A
+2. `yarn start server` in Terminal B
+3. `yarn start` in Terminal C
+4. Enter several URLs and hit "Submit"
+5. Observe List and All Results fields populate
+
 ## Testing
 
 # Mocking Backend with JSON Server
