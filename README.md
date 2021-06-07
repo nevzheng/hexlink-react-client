@@ -1,3 +1,24 @@
+# Hexlink React Client
+
+
+
+
+## Demo, no backend
+0. Open 3 Terminals
+1. `yarn install` in Terminal A
+2. `yarn start server` in Terminal B
+3. `yarn start` in Terminal C
+4. Enter several URLs and hit "Submit"
+5. Observe List and All Results fields populate
+
+## Testing
+
+# Mocking Backend with JSON Server
+1. `yarn start server`
+2. routes.json maps `api/shorten` to "/shortUrls". json-server uses rest semantics so the plural is important. When we send a POST to a plural endpoint, json-server will append to the resource.
+3. db.json contains a all of the testing data
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

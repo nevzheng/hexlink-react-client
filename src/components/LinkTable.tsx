@@ -1,14 +1,12 @@
 import Table from "react-bootstrap/Table";
 
-import { Redirect } from "types";
-
 import LinkTableRow from "./LinkTableRow";
 
-interface LinkTableProps {
-  redirects?: Array<Redirect>;
-}
+import { useAppContext } from "../context/AppContext";
 
-const LinkTable: React.FC<LinkTableProps> = ({ redirects }: LinkTableProps) => {
+const LinkTable: React.FC = () => {
+  const { state } = useAppContext();
+
   return (
     <div>
       <h3>All Results</h3>
@@ -18,14 +16,18 @@ const LinkTable: React.FC<LinkTableProps> = ({ redirects }: LinkTableProps) => {
       </p>
       <Table size="sm">
         <thead>
-          <th>#</th>
-          <th>Full URL</th>
-          <th>Shortened</th>
+          <tr>
+            <th>#</th>
+            <th>Full URL</th>
+            <th>Shortened</th>
+          </tr>
         </thead>
         <tbody>
-          {redirects != null
-            ? redirects.map((redirect, index) => {
-                return <LinkTableRow redirect={redirect} key={index} />;
+          {state.redirects != null
+            ? state.redirects.map((redirect, index) => {
+                return (
+                  <LinkTableRow redirect={redirect} key={index} index={index} />
+                );
               })
             : ""}
         </tbody>

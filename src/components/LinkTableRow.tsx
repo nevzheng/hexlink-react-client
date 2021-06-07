@@ -1,16 +1,19 @@
-import { Redirect } from "types";
+import { Redirect } from "../types/types";
 
 interface LinkTableRowProp {
   redirect: Redirect;
-  key: number;
+  index: number;
 }
 
-const LinkTableRow: React.FC<LinkTableRowProp> = (props: LinkTableRowProp) => {
+const LinkTableRow: React.FC<LinkTableRowProp> = ({
+  redirect,
+  index,
+}: LinkTableRowProp) => {
   return (
     <tr>
-      <td>{props.key}</td>
-      <td>{props.redirect.url}</td>
-      <td>{props.redirect.code}</td>
+      <td>{index}</td>
+      <td>{redirect.url}</td>
+      <td>{redirect.code}</td>
     </tr>
   );
 };

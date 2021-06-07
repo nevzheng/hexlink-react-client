@@ -1,21 +1,17 @@
 import Card from "react-bootstrap/Card";
+import { useAppContext } from "../context/AppContext";
 
-interface ShortenedResultProps {
-  url?: string;
-  shortUrl?: string;
-}
-
-const ShortenResult: React.FC<ShortenedResultProps> = ({
-  url,
-  shortUrl,
-}: ShortenedResultProps) => {
+const ShortenResult: React.FC = () => {
+  const { state } = useAppContext();
   return (
     <div>
       <Card>
         <Card.Body>
           <Card.Title>Result</Card.Title>
           <Card.Text>
-            {url ? url + "=>" + shortUrl : "Please Shorten a URL"}
+            {state.lastRedirect
+              ? state.lastRedirect.url + "=>" + state.lastRedirect.code
+              : "Please Shorten a URL"}
           </Card.Text>
         </Card.Body>
       </Card>
