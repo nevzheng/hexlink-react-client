@@ -1,10 +1,9 @@
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 
-const Information: React.FC = () => {
+const About: React.FC = () => {
   return (
     <div>
-      <h3>Implementation</h3>
       <CardGroup className="p-3">
         <Card style={{ width: "18rem" }}>
           <Card.Body>
@@ -30,4 +29,4 @@ const Information: React.FC = () => {
   );
 };
 
-export default Information;
+export default About;
