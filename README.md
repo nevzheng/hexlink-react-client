@@ -1,67 +1,17 @@
 # Hexlink React Client
 
+## OpenAPI Definition
++ The API is specified in the git repository [1]
+The repo is configured as a git submodule.
++ prism-cli is used to spin up a mock backend server: [2]
 
+### Steps
+1. `git submodule sync` will pull the schema, for now just use main/head
+2. `yarn install` will pull prism-cli
+3. `yarn run server` will run the hexlink mock backend
+4. You should now be able to make http requests
+5. Enjoy front end development
 
-
-## Demo, no backend
-0. Open 3 Terminals
-1. `yarn install` in Terminal A
-2. `yarn run server` in Terminal B
-3. `yarn start` in Terminal C
-4. Enter several URLs and hit "Submit"
-5. Observe List and All Results fields populate
-
-## Testing
-
-# Mocking Backend with JSON Server
-1. `yarn start server`
-2. routes.json maps `api/shorten` to "/shortUrls". json-server uses rest semantics so the plural is important. When we send a POST to a plural endpoint, json-server will append to the resource.
-3. db.json contains a all of the testing data
-
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### References:
+[1] Hexlink Schema: https://github.com/nevzheng/hexlink-schema
+[2] Prism: https://github.com/stoplightio/prism#readme

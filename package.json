@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "node src/test/mockserver.js"
+    "server": "prism mock hexlink-schema/hexlink.yaml"
   },
   "eslintConfig": {
     "extends": [
@@ -65,6 +65,7 @@
     "json": "^11.0.0",
     "json-server": "^0.16.3",
     "prettier": "2.3.0",
+    "@stoplight/prism-cli": "4.2.5",
     "server": "^1.0.33"
   }
 }
