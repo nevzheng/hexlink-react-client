@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
-import { PostShortenUrl } from "../api/request";
 import { useAppContext } from "../context/AppContext";
-import { ActionType, Redirect, Action } from "../types/types";
+import { Redirect, Service } from "../services/hexlink";
+import { ActionType, Action } from "../types/types";
 
 const UrlForm: React.FC = () => {
   const { dispatch } = useAppContext();
@@ -20,19 +20,8 @@ const UrlForm: React.FC = () => {
       return;
     }
     // MAKE API Request
-    await PostShortenUrl(url)
-      .then((response) => {
-        if (response.status !== 201) throw new Error();
-        return response.json();
-      })
-      .then((json) => {
-        console.log(json);
-        return {
-          url: json.url,
-          code: json.code,
-          created: json.created,
-        } as Redirect;
-      })
+
+    await Service.createRedirect(url)
       .then((r: Redirect) => {
         dispatch({ type: ActionType.SetLastRedirect, payload: r } as Action);
         return r;

@@ -10,7 +10,7 @@ const ShortenResult: React.FC = () => {
           <Card.Title>Result</Card.Title>
           <Card.Text>
             {state.lastRedirect
-              ? state.lastRedirect.url + "=>" + state.lastRedirect.code
+              ? state.lastRedirect.url + "=>" + state.lastRedirect.redirectCode
               : "Please Shorten a URL"}
           </Card.Text>
         </Card.Body>

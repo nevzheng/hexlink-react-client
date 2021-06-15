@@ -1,8 +1,4 @@
-export interface Redirect {
-  url: string;
-  code: string;
-  created: string;
-}
+import { Redirect } from "../services/hexlink";
 
 export interface AppState {
   redirects: Array<Redirect>;

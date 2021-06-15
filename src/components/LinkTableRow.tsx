@@ -1,4 +1,4 @@
-import { Redirect } from "../types/types";
+import { Redirect } from "../services/hexlink";
 
 interface LinkTableRowProp {
   redirect: Redirect;
@@ -13,7 +13,7 @@ const LinkTableRow: React.FC<LinkTableRowProp> = ({
     <tr>
       <td>{index}</td>
       <td>{redirect.url}</td>
-      <td>{redirect.code}</td>
+      <td>{redirect.redirectCode}</td>
     </tr>
   );
 };

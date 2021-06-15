@@ -8,6 +8,10 @@ import UrlForm from "./components/UrlForm";
 import ShortenResult from "./components/ShortenResult";
 
 import { AppContextProvider } from "./context/AppContext";
+import { OpenAPI } from "./services/hexlink";
+
+// Overwrite the API url for testing
+OpenAPI.BASE = "http://localhost:4010";
 
 export const App: React.FC = () => {
   return (
