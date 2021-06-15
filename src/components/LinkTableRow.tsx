@@ -14,6 +14,8 @@ const LinkTableRow: React.FC<LinkTableRowProp> = ({
       <td>{index}</td>
       <td>{redirect.url}</td>
       <td>{redirect.redirectCode}</td>
+      <td>{redirect.hits}</td>
+      <td>{redirect.timeCreated}</td>
     </tr>
   );
 };

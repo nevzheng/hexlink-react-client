@@ -33,6 +33,8 @@ const LinkTable: React.FC = () => {
                 <th>#</th>
                 <th>Full URL</th>
                 <th>Shortened</th>
+                <th>Hits</th>
+                <th>Created</th>
               </tr>
             </thead>
             <tbody>
