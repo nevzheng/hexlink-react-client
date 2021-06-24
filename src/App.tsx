@@ -11,7 +11,12 @@ import { AppContextProvider } from "./context/AppContext";
 import { OpenAPI } from "./services/hexlink";
 
 // Overwrite the API url for testing
-OpenAPI.BASE = "http://localhost:4010";
+// OpenAPI.BASE = "http://localhost:4010";
+// Appease typescript
+const backend_url = process.env.REACT_APP_API_URL;
+if (backend_url) {
+  OpenAPI.BASE = backend_url;
+}
 
 export const App: React.FC = () => {
   return (
